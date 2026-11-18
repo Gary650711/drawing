@@ -39,12 +39,15 @@ jobs:
       - name: Install JavaScript dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Disable optional Foojay JDK resolver
+        run: sed -i '/org.gradle.toolchains.foojay-resolver-convention/d' node_modules/@react-native/gradle-plugin/settings.gradle.kts
+
       - name: Generate native Android project
         run: pnpm exec expo prebuild --platform android --no-install --non-interactive
 
       - name: Build installable debug APK
         working-directory: android
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: ./gradlew -Dorg.gradle.java.home="$JAVA_HOME" -Dorg.gradle.java.installations.paths="$JAVA_HOME" assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
