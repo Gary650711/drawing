@@ -22,5 +22,5 @@
 
 ## 建置檢查
 
-- [ ] 完成 TypeScript、ESLint 與 Expo Web 啟動檢查。
-- [ ] 儲存 checkpoint，供 Dashboard 進行 Android 原生建置；Sandbox 不直接宣稱已產出 APK。
+- [x] 完成 TypeScript、ESLint 與 Expo Web 啟動檢查。
+- [x] 儲存 checkpoint，供 Dashboard 進行 Android 原生建置；Sandbox 不直接宣稱已產出 APK。
